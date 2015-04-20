@@ -10,9 +10,11 @@ public class Veranstaltungsabrechnung {
 		String[] erg= new String[i];
 		int count=0;
 		for(Einzelabrechnung ea : abrechnungsliste){
+			erg[count]=ea.getMitarbeiter().getVorname() +"_"+ ea.getMitarbeiter().getNachname() +"_";
 			for(Arbeit arbeit : ea.getArbeitsliste()){
-				erg[count]=ea.getMitarbeiter().getVorname() +"_"+ ea.getMitarbeiter().getNachname() +"_"+  "";
+				erg[count]+= (arbeit.getArbeitsende().getTimeInMillis()-arbeit.getArbeitsbeginn().getTimeInMillis())/1000/60/60+"_stundenAmStand_"+arbeit.getStandnummer()+"_";
 			}
+			count++;
 		}
 		return new String[1];
 	}

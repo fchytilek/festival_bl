@@ -18,13 +18,30 @@ public class Veranstaltung {
 	private Hashtable<Mitarbeiter, String> statusliste;
 	private Hashtable<String, Double> verdienstliste;
 	public void standHinzufügen(Stand stand){
-		
+		boolean schonVorhanden=false;
+		for(Stand s : standliste){
+			if(stand==s)
+				schonVorhanden=true;
+				
+		}
+		if(!schonVorhanden){
+			standliste.add(stand);
+		}
 	}
 	public boolean standLoeschen(Stand stand){
-		return true;
+		for(Stand s : standliste){
+			if(stand==s){
+				standliste.remove(stand);
+				return true;
+			}
+				
+		}
+		return false;
 	}
 	public void mitarbeiterStandZuteilen(int standnummer,ArrayList<Mitarbeiter> mitarbeiterliste){
-		
+		for(Stand s:standliste){
+			if(s.)
+		}
 		
 	}
 	public boolean mitarbeiterVerschieben(Mitarbeiter ma, int standVon, int standZu){
