@@ -15,10 +15,16 @@ public class Arbeit {
 	private String abrechnungsStatus;
 	private boolean geplant;
 	public void pauseWuenschen(GregorianCalendar pausenbeginn,GregorianCalendar pausenende){
-		
+		pausenWunschListe.add(pausenbeginn);
+		pausenWunschListe.add(pausenende);
 	}
 	public void arbeitBearbeiten(int sn, GregorianCalendar ab, GregorianCalendar ae, ArrayList<GregorianCalendar> pL, String aS, boolean g){
-		
+		standnummer=sn;
+		arbeitsbeginn=ab;
+		arbeitsende= ae;
+		pausenListe=pL;
+		abrechnungsStatus=aS;
+		geplant=g;
 	}
 	public int getStandnummer() {
 		return standnummer;

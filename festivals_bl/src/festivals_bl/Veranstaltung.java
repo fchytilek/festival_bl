@@ -10,17 +10,19 @@ public class Veranstaltung {
 	private GregorianCalendar anfangsDatum;
 	private GregorianCalendar endDatum;
 	private Mitarbeiter erstelltVon;
-//	private ArrayList<Stand> standliste;
+	private ArrayList<Stand> standliste;
 	private ArrayList<Mitarbeiter> mitarbeiterGesamt;
 	private ArrayList<Mitarbeiter> mitarbeiterAbgeschlossen;
 	private ArrayList<Mitarbeiter> mitarbeiterAusbezahlt;
-//	private Veranstaltungsabrechnung abrechnung;
+	private Veranstaltungsabrechnung abrechnung;
 	private Hashtable<Mitarbeiter, String> statusliste;
 	private Hashtable<String, Double> verdienstliste;
-//	public void standHinzufügen(Stand stand){
-/*	public boolean standLoeschen(Stand stand){
+	public void standHinzufügen(Stand stand){
 		
-	}*/
+	}
+	public boolean standLoeschen(Stand stand){
+		return true;
+	}
 	public void mitarbeiterStandZuteilen(int standnummer,ArrayList<Mitarbeiter> mitarbeiterliste){
 		
 		
@@ -109,5 +111,17 @@ public class Veranstaltung {
 	}
 	public void setVerdienstliste(Hashtable<String, Double> verdienstliste) {
 		this.verdienstliste = verdienstliste;
+	}
+	public ArrayList<Stand> getStandliste() {
+		return standliste;
+	}
+	public void setStandliste(ArrayList<Stand> standliste) {
+		this.standliste = standliste;
+	}
+	public Veranstaltungsabrechnung getAbrechnung() {
+		return abrechnung;
+	}
+	public void setAbrechnung(Veranstaltungsabrechnung abrechnung) {
+		this.abrechnung = abrechnung;
 	}
 }
