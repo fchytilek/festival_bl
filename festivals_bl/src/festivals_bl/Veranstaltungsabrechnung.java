@@ -11,7 +11,7 @@ public class Veranstaltungsabrechnung {
 		int count=0;
 		for(Einzelabrechnung ea : abrechnungsliste){
 			for(Arbeit arbeit : ea.getArbeitsliste()){
-				erg[count]=ea.getMitarbeiter().getVorname() +"_"+ ea.getMitarbeiter().getNachname() +"_"+ "";
+				erg[count]=ea.getMitarbeiter().getVorname() +"_"+ ea.getMitarbeiter().getNachname() +"_"+  "";
 			}
 		}
 		return new String[1];
