@@ -37,6 +37,7 @@ public class Veranstaltung {
 	public void pauseHinzufuegen(ArrayList<Mitarbeiter> mitarbeiterliste,GregorianCalendar pausenbeginn, GregorianCalendar pausenende){
 		
 	}
+	
 	public void arbeitHinzufuegen(int standnummer,ArrayList<Mitarbeiter> mitarbeiterliste, GregorianCalendar arbeitsbeginn, GregorianCalendar arbeitsende, ArrayList<GregorianCalendar> pausenliste, String abrechnungsStatus, boolean geplant){
 		
 	}
