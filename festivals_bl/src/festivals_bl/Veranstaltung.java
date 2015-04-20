@@ -48,4 +48,66 @@ public class Veranstaltung {
 	public boolean mitarbeiterAbschliessen(Mitarbeiter ma){
 		return true;
 	}
+	public int getVid() {
+		return vid;
+	}
+	public void setVid(int vid) {
+		this.vid = vid;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public GregorianCalendar getAnfangsDatum() {
+		return anfangsDatum;
+	}
+	public void setAnfangsDatum(GregorianCalendar anfangsDatum) {
+		this.anfangsDatum = anfangsDatum;
+	}
+	public GregorianCalendar getEndDatum() {
+		return endDatum;
+	}
+	public void setEndDatum(GregorianCalendar endDatum) {
+		this.endDatum = endDatum;
+	}
+	public Mitarbeiter getErstelltVon() {
+		return erstelltVon;
+	}
+	public void setErstelltVon(Mitarbeiter erstelltVon) {
+		this.erstelltVon = erstelltVon;
+	}
+	public ArrayList<Mitarbeiter> getMitarbeiterGesamt() {
+		return mitarbeiterGesamt;
+	}
+	public void setMitarbeiterGesamt(ArrayList<Mitarbeiter> mitarbeiterGesamt) {
+		this.mitarbeiterGesamt = mitarbeiterGesamt;
+	}
+	public ArrayList<Mitarbeiter> getMitarbeiterAbgeschlossen() {
+		return mitarbeiterAbgeschlossen;
+	}
+	public void setMitarbeiterAbgeschlossen(
+			ArrayList<Mitarbeiter> mitarbeiterAbgeschlossen) {
+		this.mitarbeiterAbgeschlossen = mitarbeiterAbgeschlossen;
+	}
+	public ArrayList<Mitarbeiter> getMitarbeiterAusbezahlt() {
+		return mitarbeiterAusbezahlt;
+	}
+	public void setMitarbeiterAusbezahlt(
+			ArrayList<Mitarbeiter> mitarbeiterAusbezahlt) {
+		this.mitarbeiterAusbezahlt = mitarbeiterAusbezahlt;
+	}
+	public Hashtable<Mitarbeiter, String> getStatusliste() {
+		return statusliste;
+	}
+	public void setStatusliste(Hashtable<Mitarbeiter, String> statusliste) {
+		this.statusliste = statusliste;
+	}
+	public Hashtable<String, Double> getVerdienstliste() {
+		return verdienstliste;
+	}
+	public void setVerdienstliste(Hashtable<String, Double> verdienstliste) {
+		this.verdienstliste = verdienstliste;
+	}
 }
