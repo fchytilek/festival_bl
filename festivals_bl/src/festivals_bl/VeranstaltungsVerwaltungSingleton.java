@@ -24,7 +24,7 @@ public class VeranstaltungsVerwaltungSingleton {
 		
 	}
 	
-	public Veranstaltung getVeranstaltungById(int id){
+	public Veranstaltung getVeranstaltungById(int id) throws Exception{
 		for(Veranstaltung v : veranstaltungsListe){
 			if(v.getVid() == id)
 				return v;
