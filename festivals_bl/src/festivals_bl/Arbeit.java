@@ -20,4 +20,58 @@ public class Arbeit {
 	public void arbeitBearbeiten(int sn, GregorianCalendar ab, GregorianCalendar ae, ArrayList<GregorianCalendar> pL, String aS, boolean g){
 		
 	}
+	public int getStandnummer() {
+		return standnummer;
+	}
+	public void setStandnummer(int standnummer) {
+		this.standnummer = standnummer;
+	}
+	public Mitarbeiter getMitarbeiter() {
+		return mitarbeiter;
+	}
+	public void setMitarbeiter(Mitarbeiter mitarbeiter) {
+		this.mitarbeiter = mitarbeiter;
+	}
+	public GregorianCalendar getArbeitsbeginn() {
+		return arbeitsbeginn;
+	}
+	public void setArbeitsbeginn(GregorianCalendar arbeitsbeginn) {
+		this.arbeitsbeginn = arbeitsbeginn;
+	}
+	public GregorianCalendar getArbeitsende() {
+		return arbeitsende;
+	}
+	public void setArbeitsende(GregorianCalendar arbeitsende) {
+		this.arbeitsende = arbeitsende;
+	}
+	public ArrayList<GregorianCalendar> getPausenListe() {
+		return pausenListe;
+	}
+	public void setPausenListe(ArrayList<GregorianCalendar> pausenListe) {
+		this.pausenListe = pausenListe;
+	}
+	public ArrayList<GregorianCalendar> getPausenWunschListe() {
+		return pausenWunschListe;
+	}
+	public void setPausenWunschListe(ArrayList<GregorianCalendar> pausenWunschListe) {
+		this.pausenWunschListe = pausenWunschListe;
+	}
+	public double getArbeitszeit() {
+		return arbeitszeit;
+	}
+	public void setArbeitszeit(double arbeitszeit) {
+		this.arbeitszeit = arbeitszeit;
+	}
+	public String getAbrechnungsStatus() {
+		return abrechnungsStatus;
+	}
+	public void setAbrechnungsStatus(String abrechnungsStatus) {
+		this.abrechnungsStatus = abrechnungsStatus;
+	}
+	public boolean isGeplant() {
+		return geplant;
+	}
+	public void setGeplant(boolean geplant) {
+		this.geplant = geplant;
+	}
 }

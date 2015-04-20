@@ -25,4 +25,46 @@ public class Einzelabrechnung {
 	public void anreisekostenKorrigieren(double kosten, String kommentar){
 		
 	}
+	public Mitarbeiter getMitarbeiter() {
+		return mitarbeiter;
+	}
+	public void setMitarbeiter(Mitarbeiter mitarbeiter) {
+		this.mitarbeiter = mitarbeiter;
+	}
+	public int getVid() {
+		return vid;
+	}
+	public void setVid(int vid) {
+		this.vid = vid;
+	}
+	public ArrayList<Arbeit> getArbeitsliste() {
+		return arbeitsliste;
+	}
+	public void setArbeitsliste(ArrayList<Arbeit> arbeitsliste) {
+		this.arbeitsliste = arbeitsliste;
+	}
+	public double getAnreisekosten() {
+		return anreisekosten;
+	}
+	public void setAnreisekosten(double anreisekosten) {
+		this.anreisekosten = anreisekosten;
+	}
+	public String getAnreiseKommentar() {
+		return anreiseKommentar;
+	}
+	public void setAnreiseKommentar(String anreiseKommentar) {
+		this.anreiseKommentar = anreiseKommentar;
+	}
+	public boolean isAktiv() {
+		return aktiv;
+	}
+	public void setAktiv(boolean aktiv) {
+		this.aktiv = aktiv;
+	}
+	public boolean isAnreiseBestaetigt() {
+		return anreiseBestaetigt;
+	}
+	public void setAnreiseBestaetigt(boolean anreiseBestaetigt) {
+		this.anreiseBestaetigt = anreiseBestaetigt;
+	}
 }
