@@ -14,6 +14,21 @@ public class Arbeit {
 	private double arbeitszeit;
 	private String abrechnungsStatus;
 	private boolean geplant;
+	private boolean aktiv=false;
+	
+	public boolean isAktiv() {
+		return aktiv;
+	}
+	public void setAktiv(boolean aktiv) {
+		this.aktiv = aktiv;
+	}
+	public Arbeit(int sn,Mitarbeiter ma, GregorianCalendar ab, String aS, boolean g){
+		standnummer=sn;
+		mitarbeiter=ma;
+		arbeitsbeginn=ab;
+		abrechnungsStatus=aS;
+		geplant=g;
+	}
 	public void pauseWuenschen(GregorianCalendar pausenbeginn,GregorianCalendar pausenende){
 		pausenWunschListe.add(pausenbeginn);
 		pausenWunschListe.add(pausenende);

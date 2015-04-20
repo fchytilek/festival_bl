@@ -9,9 +9,16 @@ public class Einzelabrechnung {
 	private ArrayList<Arbeit> arbeitsListe;
 	private double anreisekosten;
 	private String anreiseKommentar;
-	private boolean aktiv;
+	private boolean aktiv = false;
 	private boolean anreiseBestaetigt;
+	private boolean abgeschlossen = false;
 	
+	public boolean isAbgeschlossen() {
+		return abgeschlossen;
+	}
+	public void setAbgeschlossen(boolean abgeschlossen) {
+		this.abgeschlossen = abgeschlossen;
+	}
 	public void arbeitHinzufuegen(Arbeit arb){
 		this.arbeitsListe.add(arb);
 		

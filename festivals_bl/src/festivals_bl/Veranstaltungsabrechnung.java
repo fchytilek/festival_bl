@@ -18,4 +18,10 @@ public class Veranstaltungsabrechnung {
 		}
 		return new String[1];
 	}
+	public ArrayList<Einzelabrechnung> getAbrechnungsliste() {
+		return abrechnungsliste;
+	}
+	public void setAbrechnungsliste(ArrayList<Einzelabrechnung> abrechnungsliste) {
+		this.abrechnungsliste = abrechnungsliste;
+	}
 }
