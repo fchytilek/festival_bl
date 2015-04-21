@@ -4,10 +4,17 @@ import java.util.ArrayList;
 
 public class VeranstaltungsVerwaltungSingleton {
 	
-	private static VeranstaltungsVerwaltungSingleton instance;
+	private static VeranstaltungsVerwaltungSingleton instance = null;
 	private ArrayList<Veranstaltung> veranstaltungsListe;
 	
+	private VeranstaltungsVerwaltungSingleton(){
+		veranstaltungsListe = new ArrayList<Veranstaltung>();
+	}
+	
 	public static VeranstaltungsVerwaltungSingleton getInstance(){
+		if(instance==null){
+			instance = new VeranstaltungsVerwaltungSingleton();
+		}
 		return instance;
 		
 	}

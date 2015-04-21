@@ -9,7 +9,14 @@ public class Stand {
 	private Mitarbeiter standleiter;
 	private Mitarbeiter stellvertreter;
 	private ArrayList<Mitarbeiter> mitarbeiterListe;
-	VeranstaltungsVerwaltungSingleton vv = VeranstaltungsVerwaltungSingleton.getInstance();
+	VeranstaltungsVerwaltungSingleton vv;
+	
+	public Stand(int vid, int standnummer){
+		this.vid=vid;
+		this.standnummer=standnummer;
+		vv = VeranstaltungsVerwaltungSingleton.getInstance();
+		mitarbeiterListe = new ArrayList<Mitarbeiter>();
+	}
 	
 	public void standleiterAendern(Mitarbeiter maNeu) throws Exception{
 		Veranstaltung veranstaltung = vv.getVeranstaltungById(vid);
@@ -50,6 +57,9 @@ public class Stand {
 	}
 
 	public Mitarbeiter getStandleiter() {
+		if(standleiter==null)//Gibt es noch keinen Standleiter, wird die NullPointerException vermieden indem der Mitarbeiter mit diesem Namen retourniert wird
+			return new Mitarbeiter("Noch kein","Standleiter","example"); 
+		
 		return standleiter;
 	}
 
@@ -58,6 +68,9 @@ public class Stand {
 	}
 
 	public Mitarbeiter getStellvertreter() {
+		if(stellvertreter==null)
+			return new Mitarbeiter("Noch kein","Stellvertreter","example");
+		
 		return stellvertreter;
 	}
 

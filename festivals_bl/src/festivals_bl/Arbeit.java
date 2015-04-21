@@ -16,23 +16,24 @@ public class Arbeit {
 	private boolean geplant;
 	private boolean aktiv=false;
 	
-	public boolean isAktiv() {
-		return aktiv;
-	}
-	public void setAktiv(boolean aktiv) {
-		this.aktiv = aktiv;
-	}
 	public Arbeit(int sn,Mitarbeiter ma, GregorianCalendar ab, String aS, boolean g){
 		standnummer=sn;
 		mitarbeiter=ma;
 		arbeitsbeginn=ab;
 		abrechnungsStatus=aS;
 		geplant=g;
+		
+		
+		arbeitsende=null;
+		pausenListe=new ArrayList<GregorianCalendar>();
+		pausenWunschListe=new ArrayList<GregorianCalendar>();
 	}
+
 	public void pauseWuenschen(GregorianCalendar pausenbeginn,GregorianCalendar pausenende){
 		pausenWunschListe.add(pausenbeginn);
 		pausenWunschListe.add(pausenende);
 	}
+	
 	public void arbeitBearbeiten(int sn, GregorianCalendar ab, GregorianCalendar ae, ArrayList<GregorianCalendar> pL, String aS, boolean g){
 		standnummer=sn;
 		arbeitsbeginn=ab;
@@ -41,6 +42,14 @@ public class Arbeit {
 		abrechnungsStatus=aS;
 		geplant=g;
 	}
+	
+	public boolean isAktiv() {
+		return aktiv;
+	}
+	public void setAktiv(boolean aktiv) {
+		this.aktiv = aktiv;
+	}
+
 	public int getStandnummer() {
 		return standnummer;
 	}
@@ -60,10 +69,25 @@ public class Arbeit {
 		this.arbeitsbeginn = arbeitsbeginn;
 	}
 	public GregorianCalendar getArbeitsende() {
+		if(arbeitsende==null)
+			return new GregorianCalendar();
+		
 		return arbeitsende;
 	}
+	//Wichtig!
 	public void setArbeitsende(GregorianCalendar arbeitsende) {
 		this.arbeitsende = arbeitsende;
+		
+		long arbeitszeit = this.arbeitsbeginn.getTimeInMillis()-this.arbeitsende.getTimeInMillis();
+		long pausen=0;
+		
+		for(GregorianCalendar pause : this.pausenListe)
+			if( (pausenListe.indexOf(pause)%2) == 0)
+				pausen = pausen + pause.getTimeInMillis();
+			else
+				pausen = pausen - pause.getTimeInMillis();
+				
+		this.setArbeitszeit((arbeitszeit-pausen)/1000/60);
 	}
 	public ArrayList<GregorianCalendar> getPausenListe() {
 		return pausenListe;

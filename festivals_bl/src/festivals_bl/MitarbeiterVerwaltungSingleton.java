@@ -4,10 +4,17 @@ import java.util.ArrayList;
 
 public class MitarbeiterVerwaltungSingleton {
 	
-	private static MitarbeiterVerwaltungSingleton instance;
+	private static MitarbeiterVerwaltungSingleton instance = null;
 	private ArrayList<Mitarbeiter> mitarbeiterListe;
 	
+	private MitarbeiterVerwaltungSingleton(){
+		mitarbeiterListe = new ArrayList<Mitarbeiter>();
+	}
+	
 	public static MitarbeiterVerwaltungSingleton getInstance(){
+		if(instance==null){
+			instance = new MitarbeiterVerwaltungSingleton();
+		}
 		return instance;
 	}
 	
