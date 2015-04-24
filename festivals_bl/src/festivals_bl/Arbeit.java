@@ -7,12 +7,18 @@ public class Arbeit {
 
 	private int standnummer;
 	private Mitarbeiter mitarbeiter;
+	
 	private GregorianCalendar arbeitsbeginn;
 	private GregorianCalendar arbeitsende;
+	
 	private ArrayList<GregorianCalendar> pausenListe;
 	private ArrayList<GregorianCalendar> pausenWunschListe;
 	private double arbeitszeit;
+	
 	private String abrechnungsStatus;
+	private double gehalt;
+	
+
 	private boolean geplant;
 	private boolean aktiv=false;
 	
@@ -68,6 +74,8 @@ public class Arbeit {
 	public void setArbeitsbeginn(GregorianCalendar arbeitsbeginn) {
 		this.arbeitsbeginn = arbeitsbeginn;
 	}
+	
+	//Wichtig
 	public GregorianCalendar getArbeitsende() {
 		if(arbeitsende==null)
 			return new GregorianCalendar();
@@ -78,17 +86,21 @@ public class Arbeit {
 	public void setArbeitsende(GregorianCalendar arbeitsende) {
 		this.arbeitsende = arbeitsende;
 		
-		long arbeitszeit = this.arbeitsbeginn.getTimeInMillis()-this.arbeitsende.getTimeInMillis();
+		long gesamtzeit = this.arbeitsende.getTimeInMillis() - this.arbeitsbeginn.getTimeInMillis();
+		System.out.println(" Gesamt: "+gesamtzeit/1000/60/60);
 		long pausen=0;
 		
 		for(GregorianCalendar pause : this.pausenListe)
 			if( (pausenListe.indexOf(pause)%2) == 0)
-				pausen = pausen + pause.getTimeInMillis();
-			else
 				pausen = pausen - pause.getTimeInMillis();
-				
-		this.setArbeitszeit((arbeitszeit-pausen)/1000/60);
+			else
+				pausen = pausen + pause.getTimeInMillis();
+		
+		System.out.println(" Pausen: "+ pausen/1000/60/60);
+		
+		this.setArbeitszeit((gesamtzeit-pausen)/1000/60/60);
 	}
+	
 	public ArrayList<GregorianCalendar> getPausenListe() {
 		return pausenListe;
 	}
@@ -117,6 +129,14 @@ public class Arbeit {
 		return geplant;
 	}
 	public void setGeplant(boolean geplant) {
+
 		this.geplant = geplant;
+	}
+	public double getGehalt() {
+		return gehalt;
+	}
+
+	public void setGehalt(double gehalt) {
+		this.gehalt = gehalt;
 	}
 }

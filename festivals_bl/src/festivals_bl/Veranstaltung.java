@@ -32,6 +32,7 @@ public class Veranstaltung {
 		vid = vidCounter;
 		vidCounter++;
 		
+		abrechnung = new Veranstaltungsabrechnung();
 		standliste = new ArrayList<Stand>();
 		mitarbeiterGesamt = new ArrayList<Mitarbeiter>() ;
 		mitarbeiterAbgeschlossen = new ArrayList<Mitarbeiter>() ;
@@ -155,19 +156,24 @@ public class Veranstaltung {
 		return true;
 	}
 
-	public void pauseHinzufuegen(ArrayList<Mitarbeiter> mitarbeiterliste, GregorianCalendar pausenbeginn, GregorianCalendar pausenende) {
+	//Nur möglich wenn gerade eine Arbeit aktiv ist, sonst muss Arbeit ändern verwendet werden
+	public void pauseHinzufuegen(ArrayList<Mitarbeiter> mitarbeiterliste, GregorianCalendar pausenbeginn, GregorianCalendar pausenende) throws Exception {
 		for( Mitarbeiter ma: mitarbeiterliste) {
 			for (Einzelabrechnung ea : ma.getAbrechnungsListe()) {
 				if (ea.getVid() == vid)
-					for(Arbeit arb : ea.getArbeitsliste()){
-						if(arb.getArbeitsende()==null){
+					if(!ea.isAktiv())
+						throw new Exception("Es ist keine Arbeit offen");
+					else{
+						for(Arbeit arb : ea.getArbeitsliste()){
+							if(arb.isAktiv()){
 							
-							ArrayList<GregorianCalendar> pausenListe = arb.getPausenListe();
-							pausenListe.add(pausenbeginn);
-							pausenListe.add(pausenende);
-							arb.setPausenListe(pausenListe);
+								ArrayList<GregorianCalendar> pausenListe = arb.getPausenListe();
+								pausenListe.add(pausenbeginn);
+								pausenListe.add(pausenende);
+								arb.setPausenListe(pausenListe);
+							}
+						}
 					}
-				}
 			}
 		}
 	}
@@ -197,7 +203,13 @@ public class Veranstaltung {
 					else{
 						for(Arbeit arb : ea.getArbeitsliste()){
 							if(arb.isAktiv()){
+								//Falls Pause noch nicht beendet -> Pause beenden mit gleicher Zeit wie arbeitsende
+								if(arb.getPausenListe().size()%2!=0)
+									arb.getPausenListe().add(arbeitsende);
+								
 								arb.setArbeitsende(arbeitsende);
+								
+								
 								arb.setAktiv(false);
 								ea.setAktiv(false);
 							}

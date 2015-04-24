@@ -110,12 +110,58 @@ public class TESTaCLASS {
 				for(Arbeit arb : ea.getArbeitsliste())
 					System.out.println("Beginn: "+arb.getArbeitsbeginn().getTime()+" Ende: "+arb.getArbeitsende().getTime());
 		
+		//Pause zu Wolfis arbeit hinzufügen
+		//Pausenbeginn erstellen
+				GregorianCalendar pausenbeginn = new GregorianCalendar();
+				pausenbeginn.set(2015, 7, 22, 15, 30);
+					System.out.println("Pausenbeginn wurde gesetzt: "+pausenbeginn.getTime());
+		
+		//Pausenende erstellen
+		GregorianCalendar pausenende = new GregorianCalendar();
+		pausenende.set(2015, 7, 22, 16, 30);
+		System.out.println("Pausenende wurde gesetzt: "+pausenende.getTime());		
+		
+		//Pausen tatsächlich hinzufügen
+		vv.getVeranstaltungById(testVeranstaltung.getVid()).pauseHinzufuegen(wolfisList, pausenbeginn, pausenende);
+		
+		
 		//Wolfis arbeit wieder beenden
 		
 		//Arbeitsende erstellen
 				GregorianCalendar arbeitsende = new GregorianCalendar();
 				arbeitsende.set(2015, 7, 22, 18, 30);
-					System.out.println("Arbeitsende wurde gesetzt: "+arbeitsbeginn.getTime());
-							
+					System.out.println("Arbeitsende wurde gesetzt: "+arbeitsende.getTime());
+						
+		//Arbeit tatsächlich beenden
+		vv.getVeranstaltungById(testVeranstaltung.getVid()).arbeitBeenden(wolfisList, arbeitsende);
+		
+		//Arbeiten von Wolfi erneut ausgeben
+		System.out.println("Wolfis arbeiten: ");
+		
+		for(Einzelabrechnung ea : wolfi.getAbrechnungsListe())
+			if(ea.getVid() == testVeranstaltung.getVid())
+				for(Arbeit arb : ea.getArbeitsliste()){
+					System.out.println("Beginn: "+arb.getArbeitsbeginn().getTime()+" Ende: "+arb.getArbeitsende().getTime()+ " Arbeitszeit: "+ arb.getArbeitszeit() +" Pausen: ");
+					
+					int i = 0;
+					for(GregorianCalendar pause : arb.getPausenListe()){
+						if(i%2 == 0)
+							System.out.println(" Beginn: "+ pause.getTime());
+						else
+							System.out.println(" Ende: "+ pause.getTime());
+						
+						i++;	
+
+				}
+		}
+		
+		//Wolfi abschliessen
+		vv.getVeranstaltungById(testVeranstaltung.getVid()).mitarbeiterAbschliessen(wolfi);
+		
+		
+		//Abrechnung ausgeben
+		for(String string : vv.getVeranstaltungById(testVeranstaltung.getVid()).getAbrechnung().abrechnungErstellen() )
+		System.out.println(string);
+		
 	}
 }

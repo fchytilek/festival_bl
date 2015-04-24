@@ -4,7 +4,13 @@ package festivals_bl;
 import java.util.ArrayList;
 
 public class Veranstaltungsabrechnung {
+	
 	private ArrayList<Einzelabrechnung> abrechnungsliste;
+	
+	public Veranstaltungsabrechnung(){
+		abrechnungsliste = new ArrayList<Einzelabrechnung>();
+	}
+	
 	public String[] abrechnungErstellen(){
 		int i = abrechnungsliste.size();
 		String[] erg= new String[i];
@@ -16,7 +22,7 @@ public class Veranstaltungsabrechnung {
 			}
 			count++;
 		}
-		return new String[1];
+		return erg;
 	}
 	public ArrayList<Einzelabrechnung> getAbrechnungsliste() {
 		return abrechnungsliste;
